@@ -22,7 +22,10 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-seq.sync().then(result=>{
+Product.belongsTo(User, {constraints: true, onDelete: 'CASCADE'})
+User.hasMany(Product)
+
+seq.sync({force: true}).then(result=>{
     app.listen(3000)
 }).catch(err=>{
     console.log(err)
