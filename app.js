@@ -24,7 +24,7 @@ app.use(errorController.get404);
 
 Product.belongsTo(User, { constraints: true, onDelete: "CASCADE" });
 User.hasMany(Product);
-
+User.hasOne(Cart)
 seq
   .sync({ force: true })
   .then((result) => {
